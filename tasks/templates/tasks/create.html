@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>Task registration page</h1>
+<form action="{% url 'tasks:create' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="register">
+</form>
+
+<br>
+
+<a href="{% url 'tasks:index' %}">return</a>
+{% endblock %}

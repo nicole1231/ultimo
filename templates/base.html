@@ -1,0 +1,38 @@
+{% load static %}
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Task</title>
+    <link rel="stylesheet" href="{% static 'tasks/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'tasks/css/style.css' %}">
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'tasks:index' %}">Tasks list</a></li>
+        <li>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <li><a><button type="submit">Log out</button></a></li>
+          </form>
+        </li>
+        <li><a href="{% url 'user_detail' user.pk %}">Member Information</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'signup' %}">Register user</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <main>
+      <div>
+        {% block main %}
+        {% endblock %}
+      </div>
+    </main>
+  </body>
+
+</html>

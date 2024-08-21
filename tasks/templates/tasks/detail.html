@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>Task details page</h1>
+<p>
+  <strong>title:</strong>
+  {{task.title}}
+</p>
+
+<p>
+  <strong>Content:</strong>
+  {{task.content}}
+</p>
+<a href="{% url 'tasks:index' %}">return</a> |
+<a href="{% url 'tasks:edit' task.id %}">edit</a>
+{% endblock %}
